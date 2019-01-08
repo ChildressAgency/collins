@@ -41,3 +41,32 @@ function hero_box_block(){
     ) );
 }
 add_action( 'init', 'hero_box_block', 10, 0 );
+
+function section_heading_block(){
+    wp_register_script(
+        'section-heading-script', // name of script
+        get_template_directory_uri() . '/js/block-section-heading.js', // path to script
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' ) // dependencies
+    );
+
+    // editor styles
+    wp_register_style(
+        'section-heading-editor-style',
+        get_template_directory_uri() . '/css/block-section-heading-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    // editor styles
+    wp_register_style(
+        'section-heading-style',
+        get_template_directory_uri() . '/css/block-section-heading-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/section-heading', array(
+        'editor_script' => 'section-heading-script', // default script / script to define behavior within the editor
+        'editor_style'  => 'section-heading-editor-style',
+        'style'  => 'section-heading-style',
+    ) );
+}
+add_action( 'init', 'section_heading_block', 10, 0 );
