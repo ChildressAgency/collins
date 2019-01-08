@@ -1,0 +1,148 @@
+@import _variables.sass
+@import _reset.sass
+
+
+html
+    font-size: 62.5%
+
+body
+    +font-size(16)
+    line-height: 1.5
+    overflow-x: hidden
+
+p
+    margin-bottom: 15px
+
+a
+    color: $color-primary
+    text-decoration: none
+
+    &:hover
+        text-decoration: underline
+
+img
+    height: auto
+    max-width: 100%
+
+div,
+div::before, //sass-lint:disable-line force-pseudo-nesting
+div::after //sass-lint:disable-line force-pseudo-nesting
+    background-position: center center
+    background-size: cover
+
+.container
+    margin-left: auto
+    margin-right: auto
+    padding-left: 15px
+    padding-right: 15px
+    position: relative
+    width: 100%
+
+    &::after
+        clear: both
+        content: ' '
+        display: table
+
+    &--fluid
+        max-width: 100%
+
+    &--thin
+        width: 100%
+
+///////////////////////////////////////////////////////////////////////////////
+// HEADER                                                                    //
+///////////////////////////////////////////////////////////////////////////////
+
+.header
+    display: flex
+    justify-content: space-between
+    margin-right: 15px
+    margin-left: 15px
+    margin-top: 15px
+
+    &__links
+        align-items: flex-end
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+    &__login
+        @extend %font-helvetica-neue
+        +font-size(18)
+
+        a
+            color: $color-text-grey
+
+.navbar
+    &__toggler
+        +font-size(30)
+        background-color: transparent
+        border: 0
+        cursor: pointer
+        display: block
+        margin-bottom: 15px
+        margin-left: auto
+        margin-right: auto
+
+    &__nav
+        align-items: flex-start
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        list-style-type: none
+        max-height: 0
+        overflow: hidden
+        transition: .3s max-height ease
+
+    &__item
+        +font-size(22)
+        font-weight: bold
+        margin-left: 20px
+        margin-right: 20px
+        padding-bottom: 15px
+        padding-top: 5px
+
+        &::before
+            display: none
+
+        &:last-of-type
+            margin-right: 0
+
+    &__link
+        @extend %font-helvetica-neue
+        color: $color-secondary
+        text-decoration: none
+
+        &:hover
+            color: $color-primary
+            text-decoration: none
+
+    &__drop-menu
+        background-color: $color-black
+        display: none
+        margin-top: 40px
+        padding: 15px 30px
+        position: absolute
+        z-index: 99
+
+        &:hover
+            display: block
+
+        &::before
+            content: ' '
+            height: 45px
+            left: 0
+            position: absolute
+            top: -45px
+            width: 100%
+
+    &__drop-item
+        // @extend %font-helvetica
+        color: $color-white
+        display: block
+        margin-bottom: 5px
+
+        &:last-of-type
+            margin-bottom: 0
+
+@import _responsive.sass
