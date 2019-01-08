@@ -62,7 +62,22 @@
 		'footer_menu' => 'Footer Menu',
 	) );
 
+
+	// Custom Blocks Category
+	function custom_blocks_category( $categories, $post ){
+		return array_merge(
+			array(
+				array(
+					'slug'	=> 'custom-blocks',
+					'title'	=> __( 'Custom Blocks', 'custom-blocks' )
+				)
+			),
+			$categories
+		);
+	}
+	add_filter( 'block_categories', 'custom_blocks_category', 10, 2 );
+
 	include "functions/options_page.php";
 	include "functions/custom-nav-walker.php";
-	//include "functions/gutenberg-blocks.php";
+	include "functions/gutenberg-blocks.php";
 ?>
