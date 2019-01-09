@@ -58,14 +58,22 @@ registerBlockType( 'childress/image-links-link', {
             type: 'string',
             source: 'text',
             selector: '.image-links__title'
+        },
+        link: {
+            type: 'string'
         }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { imageUrl, imageId, imageAlt, title } = attributes;
+        const { imageUrl, imageId, imageAlt, title, link } = attributes;
 
         return (
             <div className={ className }>
+                Link:
+                <PlainText 
+                    value={ link }
+                    onChange={ ( text ) => { setAttributes({ link: text }) } }
+                />
                 <MediaUpload
                     onSelect={ media => { setAttributes({ imageUrl: media.url, imageId: media.id, imageAlt: media.alt }); } }
                     type="image"
@@ -76,6 +84,8 @@ registerBlockType( 'childress/image-links-link', {
                         </Button>
                     ) }
                 />
+                <br/>
+                Title:
                 <h3>
                     <PlainText 
                         value={ title }
@@ -87,16 +97,16 @@ registerBlockType( 'childress/image-links-link', {
     },
 
     save( { attributes } ) {
-        const { imageUrl, imageAlt, title } = attributes;
+        const { imageUrl, imageAlt, title, link } = attributes;
 
         return (
-            <div className="image-links__link">
+            <a className="image-links__link" href={ link }>
                 <img src={ imageUrl } alt={ imageAlt } />
                 <div className="image-links__info">
                     <h3 className="image-links__title">{ title }</h3>
                     <p className="image-links__learn-more">Learn More</p>
                 </div>
-            </div>
+            </a>
         );
     },
 } );
