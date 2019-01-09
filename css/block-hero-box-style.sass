@@ -2,14 +2,14 @@
 
 .wp-block-childress-hero-box
     .hero-info-box
-        padding: 60px
+        padding: 15px
 
         &--inner
             background-color: rgba(0, 0, 0, .6)
             color: $color-white
             margin-left: auto
             max-width: 500px
-            padding: 60px 30px
+            padding: 30px 15px
 
         p
             font-family: sans-serif
@@ -28,10 +28,30 @@
         margin-bottom: 0
 
     h2
-        font-size: 65px
+        +fluid-font(40px, 65px, 280, 992)
 
     h3
-        font-size: 45px
+        +fluid-font(30px, 45px, 280, 992)
 
     h4
         font-size: 25px
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-hero-box
+        .hero-info-box
+            padding: 30px
+
+            &--inner
+                padding: 60px 30px
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-hero-box
+        .hero-info-box
+            padding: 60px
+
+        h2
+            font-size: 65px
+
+        h3
+            font-size: 45px
+
