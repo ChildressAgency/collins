@@ -6,6 +6,7 @@ html
     font-size: 62.5%
 
 body
+    @extend %font-helvetica-neue
     +font-size(16)
     line-height: 1.5
     overflow-x: hidden
@@ -56,9 +57,7 @@ div::after //sass-lint:disable-line force-pseudo-nesting
 .header
     display: flex
     justify-content: space-between
-    margin-right: 15px
-    margin-left: 15px
-    margin-top: 15px
+    margin: 30px
 
     &__links
         align-items: flex-end
@@ -137,12 +136,23 @@ div::after //sass-lint:disable-line force-pseudo-nesting
             width: 100%
 
     &__drop-item
-        // @extend %font-helvetica
         color: $color-white
         display: block
         margin-bottom: 5px
 
         &:last-of-type
             margin-bottom: 0
+
+///////////////////////////////////////////////////////////////////////////////
+// CONTENT                                                                   //
+///////////////////////////////////////////////////////////////////////////////
+
+.wp-block-button
+    &__link
+        @extend %font-helvetica-neue
+        +font-size(20)
+        background-color: $color-primary
+        border-radius: 0
+
 
 @import _responsive.sass
