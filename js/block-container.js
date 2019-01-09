@@ -1,24 +1,52 @@
 const { registerBlockType } = wp.blocks;
 const { RichText, BlockControls, InspectorControls, AlignmentToolbar, MediaUpload, FontSizePicker, PlainText, InnerBlocks } = wp.editor;
 const { Fragment } = wp.element;
-const { Button } = wp.components;
+const { Button, SelectControl } = wp.components;
 
 registerBlockType( 'childress/container', {
     title: 'Container',
     icon: 'editor-contract',
     category: 'layout',
 
+    attributes: {
+        classes: {
+            type: 'string',
+            default: 'container'
+        }
+    },
+
     edit( { attributes, className, setAttributes } ) {
+        const { classes } = attributes;
+
         return (
-            <div className="container">
-                <InnerBlocks />
-            </div>
+            <Fragment>
+                <InspectorControls>
+                    <SelectControl
+                        label="Container Width"
+                        value={ classes ? classes : '' }
+                        options={[
+                            {
+                                label: 'Full-Width',
+                                value: 'container'
+                            },
+                            {
+                                label: 'Thin',
+                                value: 'container container--thin'
+                            }
+                        ]}
+                        onChange={ ( value ) => setAttributes({ classes: value }) }
+                    />
+                </InspectorControls>
+                <div className={ attributes.classes }>
+                    <InnerBlocks />
+                </div>
+            </Fragment>
         );
     },
 
     save( { attributes } ) {
         return (
-            <div class="container">
+            <div className={ attributes.classes }>
                 <InnerBlocks.Content />
             </div>
         );
