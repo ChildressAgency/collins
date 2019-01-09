@@ -20,4 +20,13 @@ $(document).ready(function(){
             $header_nav.css( 'max-height', $header_nav_height + 'px' );
         }
     });
+
+    $('.featured-slider').slick({
+        dots: false,
+        infinite: true,
+        autoplay: true,
+        slidesToShow: 1,
+        arrows: false,
+        autoplaySpeed: 5000
+    });
 });
