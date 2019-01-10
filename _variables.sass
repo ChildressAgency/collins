@@ -52,7 +52,6 @@ $color-white: #fff
 // FONT SIZE
 =font-size($size)
     font-size: $size + px
-    font-size: $size / 10 + rem
 
 =fluid-font($min-font, $max-font, $min-viewport: 280, $max-viewport: 576)
     font-size: calc((#{$min-font} * 1px) + #{strip-unit($max-font - $min-font)} * ((100vw - (#{$min-viewport} * 1px)) / #{strip-unit($max-viewport - $min-viewport)}))
