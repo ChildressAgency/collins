@@ -1,0 +1,50 @@
+@import '../_variables.sass'
+
+.wp-block-childress-sub-nav
+    .sub-nav-menu
+        align-items: center
+        border-bottom: 1px solid $color-dark
+        display: flex
+        flex-direction: column
+        list-style: none
+        margin: 0 30px
+        padding: 15px 0
+
+        li
+            +font-size(22)
+            border-bottom: 1px solid $color-dark
+            flex: 1
+            min-width: 50%
+            padding: 20px 0
+            text-align: center
+
+            &:last-of-type
+                border-bottom: 0
+
+            a
+                color: $color-black
+
+                &:hover
+                    color: $color-primary
+                    text-decoration: none
+
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-sub-nav
+        .sub-nav-menu
+            flex-direction: row
+
+            li
+                +font-size(18)
+                border-bottom: 0
+                border-right: 1px solid $color-dark
+                min-width: unset
+
+                &:last-of-type
+                    border-right: 0
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-sub-nav
+        .sub-nav-menu
+            li
+                +font-size(22)

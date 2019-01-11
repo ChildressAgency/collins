@@ -124,3 +124,51 @@ function image_links_block(){
     ) );
 }
 add_action( 'init', 'image_links_block', 10, 0 );
+
+function sub_nav_block(){
+    wp_register_script(
+        'sub-nav-script',
+        get_template_directory_uri() . '/js/block-sub-nav.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'sub-nav-editor-style',
+        get_template_directory_uri() . '/css/block-sub-nav-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'sub-nav-style',
+        get_template_directory_uri() . '/css/block-sub-nav-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/sub-nav', array(
+        'editor_script' => 'sub-nav-script',
+        'editor_style'  => 'sub-nav-editor-style',
+        'style'  => 'sub-nav-style',
+        'render_callback' => 'sub_nav_callback'
+    ) );
+}
+add_action( 'init', 'sub_nav_block', 10, 0 );
+
+function sub_nav_callback() {
+    $result = "";
+
+    $menuLocations = get_nav_menu_locations();
+    $menuId = $menuLocations[ 'about_menu' ];
+    $primaryNav = wp_get_nav_menu_items( $menuId );
+
+    $result .= '<div class="wp-block-childress-sub-nav">';
+    $result .= '<ul class="sub-nav-menu">';
+
+    foreach( $primaryNav as $navItem ){
+        $result .= '<li><a href="' . $navItem->url . '" />' . $navItem->title . '</a></li>';
+    }
+
+    $result .= '</ul>';
+    $result .= '</div>';
+
+    return $result;
+}
