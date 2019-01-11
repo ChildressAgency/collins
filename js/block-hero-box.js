@@ -34,10 +34,7 @@ registerBlockType( 'childress/hero-box', {
                         ) }
                     />
                     <InnerBlocks
-                        allowedBlocks={['childress/hero-info-box', 'childress/hero-list']}
-                        template={[
-                            ['childress/hero-info-box']
-                        ]}
+                        allowedBlocks={['childress/hero-info-box', 'childress/hero-list', 'childress/hero-open']}
                     />
                 </div>
             </div>
@@ -104,6 +101,7 @@ registerBlockType( 'childress/hero-list', {
                         ['core/list'],
                         ['core/list']
                     ]}
+                    templateLock="all"
                 />
             </div>
         );
@@ -112,6 +110,38 @@ registerBlockType( 'childress/hero-list', {
     save( { attributes } ) {
         return (
             <div className="hero-list">
+                <div className="container container--thin">
+                    <div className="hero-list__grid">
+                        <InnerBlocks.Content />
+                    </div>
+                </div>
+            </div>
+        );
+    },
+} );
+
+registerBlockType( 'childress/hero-all', {
+    title: 'Hero - All',
+    icon: 'screenoptions',
+    category: 'custom-blocks',
+    parent: ['childress/hero-box'],
+
+    edit( { attributes, className, setAttributes } ) {
+        return (
+            <div className="hero-all">
+                <InnerBlocks 
+                    template={[
+                        ['core/heading'],
+                        ['core/button']
+                    ]}
+                />
+            </div>
+        );
+    },
+
+    save( { attributes } ) {
+        return (
+            <div className="hero-all">
                 <div className="container">
                     <InnerBlocks.Content />
                 </div>
