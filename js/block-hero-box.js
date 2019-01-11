@@ -126,22 +126,62 @@ registerBlockType( 'childress/hero-all', {
     category: 'custom-blocks',
     parent: ['childress/hero-box'],
 
+    attributes: {
+        gradient: {
+            type: 'string',
+            default: 'hero-all--gradient'
+        }
+    },
+
     edit( { attributes, className, setAttributes } ) {
+        const { gradient } = attributes;
+
+        var classes = "hero-all";
+
+        if( gradient )
+            classes = "hero-all hero-all--gradient"
+
         return (
-            <div className="hero-all">
-                <InnerBlocks 
-                    template={[
-                        ['core/heading'],
-                        ['core/button']
-                    ]}
-                />
-            </div>
+            <Fragment>
+                <InspectorControls>
+                    <SelectControl
+                        label="Shade"
+                        value={ gradient ? gradient : '' }
+                        options={[
+                            {
+                                label: 'Shade',
+                                value: 'hero-all--gradient'
+                            },
+                            {
+                                label: 'No Shade',
+                                value: ''
+                            }
+                        ]}
+                        onChange={ ( value ) => setAttributes({ gradient: value }) }
+                    />
+                </InspectorControls>
+                <div className={ classes }>
+                    <InnerBlocks 
+                        template={[
+                            ['core/heading'],
+                            ['core/button']
+                        ]}
+                    />
+                </div>
+            </Fragment>
         );
     },
 
     save( { attributes } ) {
+        const { gradient } = attributes;
+
+        var classes = "hero-all";
+
+        if( gradient )
+            classes = "hero-all " + { gradient }
+
         return (
-            <div className="hero-all">
+            <div className={ classes }>
                 <div className="container">
                     <InnerBlocks.Content />
                 </div>
