@@ -169,5 +169,124 @@ div::after //sass-lint:disable-line force-pseudo-nesting
     .slick-track
         height: 100%
 
+.aligncenter
+    display: block
+
+.wp-block-columns
+    display: flex
+
+.wp-block-column
+    flex-grow: 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+// FOOTER                                                                    //
+///////////////////////////////////////////////////////////////////////////////
+
+.footer
+    &__top
+        align-items: center
+        display: flex
+        flex-direction: column
+        padding: 30px
+
+    &__info
+        width: 100%
+
+    &__social
+        align-items: center
+        display: flex
+        justify-content: center
+        margin-bottom: 30px
+        margin-top: 30px
+
+        a
+            align-items: center
+            color: $color-dark
+            display: flex
+
+            &:hover
+                color: $color-primary
+                text-decoration: none
+
+        .icon
+            +font-size(20)
+            margin-right: 15px
+
+    &__text
+        display: flex
+        flex-direction: column
+
+    &__contact
+        flex: 1
+        margin-left: 30px
+
+        .icon
+            color: $color-primary
+            position: absolute
+            text-align: center
+            transform: translate(-150%, 20%)
+            width: 20px
+
+        h4
+            +font-size(24)
+            margin-bottom: 15px
+
+        p
+            +font-size(20)
+            align-items: flex-start
+            display: flex
+
+    &__misc
+        border-left: 2px solid $color-primary
+        flex: 1
+        margin-top: 30px
+        padding: 0 30px
+
+        h4
+            +font-size(28)
+            color: $color-primary
+            font-weight: normal
+            line-height: 1em
+            margin-bottom: 15px
+
+        p
+            +font-size(20)
+
+    &__bottom
+        background-color: $color-dark
+
+    &__menu
+        padding-bottom: 60px
+        padding-top: 15px
+
+        .navbar
+            &__nav
+                align-items: center
+                justify-content: center
+                max-height: unset
+
+            &__item
+                &:first-of-type
+                    margin-left: 20px
+
+                &:last-of-type
+                    margin-right: 20px
+
+            &__link
+                +font-size(20)
+                color: $color-white
+
+    &__copyright
+        +font-size(14)
+        align-items: center
+        border-top: 1px solid $color-white
+        color: $color-white
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+
+
 
 @import _responsive.sass
