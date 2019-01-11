@@ -127,37 +127,36 @@ registerBlockType( 'childress/hero-all', {
     parent: ['childress/hero-box'],
 
     attributes: {
-        gradient: {
+        classes: {
             type: 'string',
-            default: 'hero-all--gradient'
+            default: 'hero-all hero-all--gradient'
         }
     },
 
     edit( { attributes, className, setAttributes } ) {
-        const { gradient } = attributes;
-
-        var classes = "hero-all";
-
-        if( gradient )
-            classes = "hero-all hero-all--gradient"
+        const { classes } = attributes;
 
         return (
             <Fragment>
                 <InspectorControls>
                     <SelectControl
                         label="Shade"
-                        value={ gradient ? gradient : '' }
+                        value={ classes ? classes : '' }
                         options={[
                             {
                                 label: 'Shade',
-                                value: 'hero-all--gradient'
+                                value: 'hero-all hero-all--gradient'
+                            },
+                            {
+                                label: 'Full Shade',
+                                value: 'hero-all hero-all--dark-shade'
                             },
                             {
                                 label: 'No Shade',
-                                value: ''
+                                value: 'hero-all'
                             }
                         ]}
-                        onChange={ ( value ) => setAttributes({ gradient: value }) }
+                        onChange={ ( value ) => setAttributes({ classes: value }) }
                     />
                 </InspectorControls>
                 <div className={ classes }>
@@ -173,12 +172,7 @@ registerBlockType( 'childress/hero-all', {
     },
 
     save( { attributes } ) {
-        const { gradient } = attributes;
-
-        var classes = "hero-all";
-
-        if( gradient )
-            classes = "hero-all " + { gradient }
+        const { classes } = attributes;
 
         return (
             <div className={ classes }>
