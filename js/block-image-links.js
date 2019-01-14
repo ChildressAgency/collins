@@ -84,7 +84,6 @@ registerBlockType( 'childress/image-links-link', {
                     ) }
                 />
                 <br/>
-                Title:
                 <h3>
                     <PlainText 
                         value={ title }
