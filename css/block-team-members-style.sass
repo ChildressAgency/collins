@@ -1,0 +1,34 @@
+@import '../_variables.sass'
+
+.wp-block-childress-team-members
+    .container
+        display: grid
+        grid-gap: 30px
+        grid-template-columns: 1fr
+
+    .team-member
+        &__image
+            width: 100%
+
+        &__name
+            +font-size(30)
+            font-weight: normal
+            line-height: 1em
+            margin-top: 15px
+
+        &__title
+            +font-size(22)
+            color: $color-team-title
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-team-members
+        .container
+            grid-gap: 15px
+            grid-template-columns: repeat(2, 1fr)
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-team-members
+        .container
+            grid-gap: 30px
+            grid-template-columns: repeat(3, 1fr)
+

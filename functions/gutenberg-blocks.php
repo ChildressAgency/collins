@@ -154,6 +154,34 @@ function big_list_block(){
 add_action( 'init', 'big_list_block', 10, 0 );
 
 
+function team_members_block(){
+    wp_register_script(
+        'team-members-script',
+        get_template_directory_uri() . '/js/block-team-members.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'team-members-editor-style',
+        get_template_directory_uri() . '/css/block-team-members-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'team-members-style',
+        get_template_directory_uri() . '/css/block-team-members-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/team-members', array(
+        'editor_script' => 'team-members-script',
+        'editor_style'  => 'team-members-editor-style',
+        'style'  => 'team-members-style',
+    ) );
+}
+add_action( 'init', 'team_members_block', 10, 0 );
+
+
 function sub_nav_block(){
     wp_register_script(
         'sub-nav-script',
