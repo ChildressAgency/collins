@@ -10,11 +10,16 @@
         img
             display: block
             height: auto
+            transition: transform 10s linear
             width: 100%
+
+            &:hover
+                transform: scale(1.5)
 
         &__link
             display: flex
             flex-direction: column
+            overflow: hidden
 
             &:hover
                 text-decoration: none
@@ -28,6 +33,7 @@
             flex-direction: column
             justify-content: space-between
             padding: 15px 30px
+            z-index: 99
 
         &__title
             +font-size(20)
