@@ -1,5 +1,5 @@
 const { registerBlockType } = wp.blocks;
-const { RichText, BlockControls, InspectorControls, AlignmentToolbar, MediaUpload, FontSizePicker, PlainText, InnerBlocks } = wp.editor;
+const { RichText, BlockControls, InspectorControls, AlignmentToolbar, MediaUpload, FontSizePicker, PlainText, InnerBlocks, URLInputButton } = wp.editor;
 const { Fragment } = wp.element;
 const { Button, SelectControl } = wp.components;
 
