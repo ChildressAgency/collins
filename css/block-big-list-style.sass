@@ -1,0 +1,43 @@
+@import '../_variables.sass'
+
+.wp-block-childress-big-list
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
+
+    ol
+        counter-reset: elementcounter
+        list-style-type: none
+
+        li
+            +font-size(30)
+            font-weight: bold
+            margin-bottom: 50px
+            padding-left: 60px
+            position: relative
+            text-indent: -30px
+
+            &:first-line
+                +font-size(28)
+                font-weight: normal
+
+            &::before
+                +font-size(60)
+                color: $color-dark
+                content: counter(elementcounter)
+                counter-increment: elementcounter
+                font-weight: bold
+                left: 15px
+                position: absolute
+                top: -32px
+
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-big-list
+        ol
+            li
+                padding-left: 120px
+                text-indent: -60px
+
+                &::before
+                    left: 60px
