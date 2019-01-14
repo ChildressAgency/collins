@@ -9,3 +9,16 @@
         background-color: $color-primary
         border-radius: 0
         font-size: 20px
+
+blockquote
+    +font-size(20)
+    border-left: 2px solid $color-primary !important // sass-lint:disable-line no-important
+    margin-left: auto !important // sass-lint:disable-line no-important
+    width: 75%
+
+.editor-styles-wrapper
+    ul
+        list-style-type: none !important // sass-lint:disable-line no-important
+
+        li
+            +font-size(24)

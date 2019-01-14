@@ -36,6 +36,19 @@ img
     height: auto
     max-width: 100%
 
+ul
+    list-style-type: none
+
+    li
+        +font-size(24)
+        margin-bottom: 15px
+
+blockquote
+    +font-size(20)
+    border-left: 2px solid $color-primary !important // sass-lint:disable-line no-important
+    margin-left: auto !important // sass-lint:disable-line no-important
+    width: 75%
+
 div,
 div::before, //sass-lint:disable-line force-pseudo-nesting
 div::after //sass-lint:disable-line force-pseudo-nesting
