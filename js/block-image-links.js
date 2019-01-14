@@ -69,11 +69,10 @@ registerBlockType( 'childress/image-links-link', {
 
         return (
             <div className={ className }>
-                Link:
-                <PlainText 
-                    value={ link }
-                    onChange={ ( text ) => { setAttributes({ link: text }) } }
-                />
+                <URLInputButton
+                    url={ link }
+                    onChange={ ( url ) => { setAttributes({ link: url }) } }
+                    />
                 <MediaUpload
                     onSelect={ media => { setAttributes({ imageUrl: media.url, imageId: media.id, imageAlt: media.alt }); } }
                     type="image"
@@ -90,6 +89,7 @@ registerBlockType( 'childress/image-links-link', {
                     <PlainText 
                         value={ title }
                         onChange={ ( text ) => { setAttributes({ title: text }) } }
+                        placeholder="Title"
                     />
                 </h3>
             </div>
