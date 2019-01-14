@@ -1,0 +1,111 @@
+@import '../_variables.sass'
+
+.wp-block-childress-hero-box
+    color: $color-white
+
+    .hero-info-box
+        padding: 15px
+
+        &--inner
+            background-color: rgba(0, 0, 0, .6)
+            color: $color-white
+            margin-left: auto
+            max-width: 500px
+            padding: 30px 15px
+
+        p
+            font-family: sans-serif
+            margin: 30px 0
+
+        h2,
+        h3
+            margin-bottom: 0
+
+    .hero-list
+        background-color: rgba(0, 0, 0, .6)
+        color: $color-white
+        padding: 60px 0
+
+        ul
+            list-style: none
+            padding-left: 20px
+
+            &:first-of-type
+                li:first-of-type::before // sass-lint:disable-line force-pseudo-nesting
+                    border-right: 3px solid $color-primary
+                    border-top: 3px solid $color-primary
+                    content: ' '
+                    height: 10px
+                    left: 0
+                    position: absolute
+                    top: 0
+                    transform: translate(-175%, 90%) rotate(45deg)
+                    width: 10px
+
+        li
+            +font-size(24)
+            margin-bottom: 15px
+            position: relative
+
+    .hero-all
+        padding: 30px 15px
+
+        &--gradient
+            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0 , .5), rgba(0, 0, 0, 0))
+
+        &--dark-shade
+            background-color: rgba(0, 0, 0, .5)
+
+        h2,
+        h3,
+        h4
+            color: $color-white
+            margin-bottom: 0
+
+    h2,
+    h3,
+    h4
+        font-family: sans-serif
+        line-height: .9em
+        margin-bottom: 30px
+
+    h2
+        +fluid-font(40px, 65px, 280, 992)
+
+    h3
+        +fluid-font(30px, 45px, 280, 992)
+
+    h4
+        font-size: 25px
+
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-hero-box
+        .hero-info-box
+            padding: 30px
+
+            &--inner
+                padding: 60px 30px
+
+        .hero-list
+            &__grid
+                display: grid
+                grid-template-columns: 1fr 1fr
+
+            h2
+                grid-column: span 2
+
+            ul
+                padding: 0
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-hero-box
+        .hero-info-box
+            padding: 60px
+
+        h2
+            font-size: 65px
+
+        h3
+            font-size: 45px
+

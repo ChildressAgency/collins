@@ -9,6 +9,13 @@
         &--fluid
             max-width: 100%
 
+    .footer
+        &__text
+            flex-direction: row
+
+        &__misc
+            margin-left: 30px
+
 ///////////////////////////////////////////////////////////////////////////////
 // 768                                                                       //
 ///////////////////////////////////////////////////////////////////////////////
@@ -39,6 +46,32 @@
             &:hover
                 & > .navbar__drop-menu
                     display: block
+
+    .footer
+        &__top
+            align-items: flex-start
+            flex-direction: row
+
+        &__logo
+            margin-right: 60px
+
+        &__social
+            justify-content: flex-end
+            margin-top: 0
+
+        &__contact
+            margin-left: 0
+
+        &__copyright
+            flex-direction: row
+
+        .navbar
+            &__item
+                &:first-of-type // sass-lint:disable-line force-pseudo-nesting
+                    margin-left: 0
+
+                &:last-of-type
+                    margin-right: 0
 
 ///////////////////////////////////////////////////////////////////////////////
 // 992                                                                       //

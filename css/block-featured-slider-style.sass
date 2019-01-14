@@ -1,0 +1,35 @@
+@import '../_variables.sass'
+
+.wp-block-childress-featured-slider
+    height: 400px
+    position: relative
+
+    .featured-slider-banner
+        +fluid-font(35px, 56px, 280, 992)
+        background-color: $color-bg-shade
+        bottom: 0
+        color: $color-white
+        padding: 5px 10px
+        position: absolute
+        right: 0
+        z-index: 99
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-featured-slider
+        .featured-slider-banner
+            padding: 15px 30px
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-featured-slider
+        height: 500px
+
+        .featured-slider-banner
+            bottom: unset
+            padding: 30px 60px
+            top: 50%
+            transform: translateY(-50%)
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-featured-slider
+        .featured-slider-banner
+            +font-size(56)

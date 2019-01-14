@@ -39,7 +39,12 @@
 // COLORS
 $color-primary: #d33000
 $color-secondary: #00206c
+$color-dark: #2b2a2a
+
 $color-text-grey: #3e3e3e
+$color-big-list-numbers: #404040
+$color-team-title: #575757
+$color-bg-shade: rgba(0, 0, 0, .6)
 
 $color-black: #000
 $color-white: #fff
@@ -49,7 +54,6 @@ $color-white: #fff
 // FONT SIZE
 =font-size($size)
     font-size: $size + px
-    font-size: $size / 10 + rem
 
 =fluid-font($min-font, $max-font, $min-viewport: 280, $max-viewport: 576)
     font-size: calc((#{$min-font} * 1px) + #{strip-unit($max-font - $min-font)} * ((100vw - (#{$min-viewport} * 1px)) / #{strip-unit($max-viewport - $min-viewport)}))

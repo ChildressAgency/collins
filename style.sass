@@ -2,13 +2,25 @@
 @import _reset.sass
 
 
-html
-    font-size: 62.5%
-
 body
+    @extend %font-helvetica-neue
     +font-size(16)
     line-height: 1.5
     overflow-x: hidden
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    @extend %font-helvetica-neue
+
+h2
+    +font-size(56)
+
+h3
+    +font-size(30)
 
 p
     margin-bottom: 15px
@@ -23,6 +35,19 @@ a
 img
     height: auto
     max-width: 100%
+
+ul
+    list-style-type: none
+
+    li
+        +font-size(24)
+        margin-bottom: 15px
+
+blockquote
+    +font-size(20)
+    border-left: 2px solid $color-primary !important // sass-lint:disable-line no-important
+    margin-left: auto !important // sass-lint:disable-line no-important
+    width: 75%
 
 div,
 div::before, //sass-lint:disable-line force-pseudo-nesting
@@ -56,9 +81,7 @@ div::after //sass-lint:disable-line force-pseudo-nesting
 .header
     display: flex
     justify-content: space-between
-    margin-right: 15px
-    margin-left: 15px
-    margin-top: 15px
+    margin: 30px
 
     &__links
         align-items: flex-end
@@ -137,12 +160,149 @@ div::after //sass-lint:disable-line force-pseudo-nesting
             width: 100%
 
     &__drop-item
-        // @extend %font-helvetica
         color: $color-white
         display: block
         margin-bottom: 5px
 
         &:last-of-type
             margin-bottom: 0
+
+///////////////////////////////////////////////////////////////////////////////
+// CONTENT                                                                   //
+///////////////////////////////////////////////////////////////////////////////
+
+.wp-block-button
+    &__link
+        @extend %font-helvetica-neue
+        +font-size(20)
+        background-color: $color-primary
+        border-radius: 0
+
+.slick-slider
+    height: 100%
+
+    .slick-list,
+    .slick-track
+        height: 100%
+
+.aligncenter
+    display: block
+
+.wp-block-columns
+    display: flex
+
+.wp-block-column
+    flex-grow: 1
+
+
+///////////////////////////////////////////////////////////////////////////////
+// FOOTER                                                                    //
+///////////////////////////////////////////////////////////////////////////////
+
+.footer
+    &__top
+        align-items: center
+        display: flex
+        flex-direction: column
+        padding: 30px
+
+    &__info
+        width: 100%
+
+    &__social
+        align-items: center
+        display: flex
+        justify-content: center
+        margin-bottom: 30px
+        margin-top: 30px
+
+        a
+            align-items: center
+            color: $color-dark
+            display: flex
+
+            &:hover
+                color: $color-primary
+                text-decoration: none
+
+        .icon
+            +font-size(20)
+            margin-right: 15px
+
+    &__text
+        display: flex
+        flex-direction: column
+
+    &__contact
+        flex: 1
+        margin-left: 30px
+
+        .icon
+            color: $color-primary
+            position: absolute
+            text-align: center
+            transform: translate(-150%, 20%)
+            width: 20px
+
+        h4
+            +font-size(24)
+            margin-bottom: 15px
+
+        p
+            +font-size(20)
+            align-items: flex-start
+            display: flex
+
+    &__misc
+        border-left: 2px solid $color-primary
+        flex: 1
+        margin-top: 30px
+        padding: 0 30px
+
+        h4
+            +font-size(28)
+            color: $color-primary
+            font-weight: normal
+            line-height: 1em
+            margin-bottom: 15px
+
+        p
+            +font-size(20)
+
+    &__bottom
+        background-color: $color-dark
+
+    &__menu
+        padding-bottom: 60px
+        padding-top: 15px
+
+        .navbar
+            &__nav
+                align-items: center
+                justify-content: center
+                max-height: unset
+
+            &__item
+                &:first-of-type
+                    margin-left: 20px
+
+                &:last-of-type
+                    margin-right: 20px
+
+            &__link
+                +font-size(20)
+                color: $color-white
+
+    &__copyright
+        +font-size(14)
+        align-items: center
+        border-top: 1px solid $color-white
+        color: $color-white
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+
+
 
 @import _responsive.sass

@@ -60,9 +60,30 @@
 	register_nav_menus( array(
 		'main_menu' => 'Main Menu',
 		'footer_menu' => 'Footer Menu',
+		'about_menu' => 'About Us Menu',
 	) );
+
+
+	// Custom Blocks Category
+	function custom_blocks_category( $categories, $post ){
+		return array_merge(
+			array(
+				array(
+					'slug'	=> 'custom-blocks',
+					'title'	=> __( 'Custom Blocks', 'custom-blocks' )
+				)
+			),
+			$categories
+		);
+	}
+	add_filter( 'block_categories', 'custom_blocks_category', 10, 2 );
+
+	function custom_editor_styles(){
+		wp_enqueue_style( 'editor-styles', get_stylesheet_directory_uri()  .'/css/editor-styles.css' );
+	}
+	add_action( 'enqueue_block_editor_assets', 'custom_editor_styles' );
 
 	include "functions/options_page.php";
 	include "functions/custom-nav-walker.php";
-	//include "functions/gutenberg-blocks.php";
+	include "functions/gutenberg-blocks.php";
 ?>

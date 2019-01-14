@@ -17,7 +17,7 @@ class Custom_Nav_Walker extends Walker_Nav_Menu {
 
         // if the current menu item has a parent, then it is a dropdown item
         if( $parent ){
-            $output .= "<a class=\"navbar__drop-item";
+            $output .= "<li><a class=\"navbar__drop-item";
 
             // if this item goes to this page, then highlight it
             if( $objectID == $pageID )

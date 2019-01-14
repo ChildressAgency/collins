@@ -1,0 +1,35 @@
+@import '../_variables.sass'
+
+.wp-block-childress-hero-box
+    color: $color-white
+
+    div
+        background-size: cover
+
+    .underline
+        background-color: $color-primary
+        display: block
+        height: 1px
+        margin: 15px auto
+        position: relative
+        width: 90%
+
+    .hero-info-box
+        margin-left: unset
+        max-width: unset
+        padding: 15px
+
+
+    .hero-list
+        .editor-block-list__layout
+            display: grid
+            grid-template-columns: 1fr 1fr
+
+            .wp-block:first-of-type // sass-lint:disable-line force-pseudo-nesting
+                grid-column: span 2
+                padding: 0 70px
+                width: 100%
+
+            li
+                &::before
+                    display: none
