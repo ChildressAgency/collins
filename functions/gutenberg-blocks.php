@@ -1,5 +1,8 @@
 <?php
 
+///////////////////////////////////////////////////////////////////////////////
+// CONTAINER                                                                 //
+///////////////////////////////////////////////////////////////////////////////
 function container_block(){
     wp_register_script(
         'container-script',
@@ -13,7 +16,9 @@ function container_block(){
 }
 add_action( 'init', 'container_block', 10, 0 );
 
-
+///////////////////////////////////////////////////////////////////////////////
+// HERO BOX                                                                  //
+///////////////////////////////////////////////////////////////////////////////
 function hero_box_block(){
     wp_register_script(
         'hero-box-script',
@@ -41,7 +46,9 @@ function hero_box_block(){
 }
 add_action( 'init', 'hero_box_block', 10, 0 );
 
-
+///////////////////////////////////////////////////////////////////////////////
+// SECTION HEADING                                                           //
+///////////////////////////////////////////////////////////////////////////////
 function section_heading_block(){
     wp_register_script(
         'section-heading-script',
@@ -69,7 +76,9 @@ function section_heading_block(){
 }
 add_action( 'init', 'section_heading_block', 10, 0 );
 
-
+///////////////////////////////////////////////////////////////////////////////
+// FEATURED SLIDER                                                           //
+///////////////////////////////////////////////////////////////////////////////
 function featured_slider_block(){
     wp_register_script(
         'featured-slider-script',
@@ -97,7 +106,9 @@ function featured_slider_block(){
 }
 add_action( 'init', 'featured_slider_block', 10, 0 );
 
-
+///////////////////////////////////////////////////////////////////////////////
+// IMAGE LINKS                                                               //
+///////////////////////////////////////////////////////////////////////////////
 function image_links_block(){
     wp_register_script(
         'image-links-script',
@@ -125,7 +136,9 @@ function image_links_block(){
 }
 add_action( 'init', 'image_links_block', 10, 0 );
 
-
+///////////////////////////////////////////////////////////////////////////////
+// BIG LIST                                                                  //
+///////////////////////////////////////////////////////////////////////////////
 function big_list_block(){
     wp_register_script(
         'big-list-script',
@@ -153,7 +166,9 @@ function big_list_block(){
 }
 add_action( 'init', 'big_list_block', 10, 0 );
 
-
+///////////////////////////////////////////////////////////////////////////////
+// TEAM MEMBERS                                                              //
+///////////////////////////////////////////////////////////////////////////////
 function team_members_block(){
     wp_register_script(
         'team-members-script',
@@ -181,7 +196,9 @@ function team_members_block(){
 }
 add_action( 'init', 'team_members_block', 10, 0 );
 
-
+///////////////////////////////////////////////////////////////////////////////
+// ABOUT US NAVIGATION                                                       //
+///////////////////////////////////////////////////////////////////////////////
 function sub_nav_block(){
     wp_register_script(
         'sub-nav-script',
@@ -225,6 +242,75 @@ function sub_nav_callback() {
     }
 
     $result .= '</ul>';
+    $result .= '</div>';
+
+    return $result;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// PROJECT LIST                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function project_list_block(){
+    wp_register_script(
+        'project-list-script',
+        get_template_directory_uri() . '/js/block-project-list.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'project-list-editor-style',
+        get_template_directory_uri() . '/css/block-project-list-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'project-list-style',
+        get_template_directory_uri() . '/css/block-project-list-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/project-list', array(
+        'editor_script'     => 'project-list-script',
+        'editor_style'      => 'project-list-editor-style',
+        'style'             => 'project-list-style',
+        'render_callback'   => 'project_list_callback'
+    ) );
+}
+add_action( 'init', 'project_list_block', 10, 0 );
+
+
+function project_list_callback( $attributes, $content ){
+    $result = '<div class="container">';
+
+    if( isset( $attributes['category'] ) )
+        $terms = explode( ',', $attributes['category'] );
+    else
+        $terms = array( 'residential', 'commercial', 'public-infrastructure' );
+
+    $args = array(
+        'posts_per_page'    => -1,
+        'post_type'         => 'projects',
+        'tax_query'         => array(
+            array(
+                'taxonomy'  => 'project-category',
+                'field'     => 'slug',
+                'terms'     => $terms
+            )
+        )
+    );
+
+    $query = new WP_Query( $args );
+
+    if( $query->have_posts() ){
+        while( $query->have_posts() ){
+            $query->the_post();
+
+            $result .= '<h2>' . get_the_title() . '</h2>';
+            $result .= get_the_content();
+            $result .= '<hr />';
+        }
+    }
+
     $result .= '</div>';
 
     return $result;
