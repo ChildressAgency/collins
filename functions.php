@@ -1,11 +1,11 @@
 <?php
 
 	// display template file in footer
-	add_action( 'wp_footer', 'show_template' );
-	function show_template() {
-		global $template;
-		print_r( $template );
-	}
+	// add_action( 'wp_footer', 'show_template' );
+	// function show_template() {
+	// 	global $template;
+	// 	print_r( $template );
+	// }
 
 	// load jquery
 	function jquery_cdn(){
