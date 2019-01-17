@@ -304,10 +304,17 @@ function project_list_callback( $attributes, $content ){
     if( $query->have_posts() ){
         while( $query->have_posts() ){
             $query->the_post();
+            global $post;
 
-            $result .= '<h2>' . get_the_title() . '</h2>';
-            $result .= get_the_content();
-            $result .= '<hr />';
+            if( has_blocks( $post->post_content ) ){
+                $blocks = parse_blocks( $post->post_content );
+
+                var_dump( $blocks );
+            } else {
+                $result .= '<h2>' . get_the_title() . '</h2>';
+                $result .= get_the_content();
+                $result .= '<hr />';
+            }
         }
     }
 
@@ -315,3 +322,33 @@ function project_list_callback( $attributes, $content ){
 
     return $result;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// PROJECT TEMPLATE                                                          //
+///////////////////////////////////////////////////////////////////////////////
+function project_template_block(){
+    wp_register_script(
+        'project-template-script',
+        get_template_directory_uri() . '/js/block-project-template.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'project-template-editor-style',
+        get_template_directory_uri() . '/css/block-project-template-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'project-template-style',
+        get_template_directory_uri() . '/css/block-project-template-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/project-template', array(
+        'editor_script'     => 'project-template-script',
+        'editor_style'      => 'project-template-editor-style',
+        'style'             => 'project-template-style'
+    ) );
+}
+add_action( 'init', 'project_template_block', 10, 0 );
