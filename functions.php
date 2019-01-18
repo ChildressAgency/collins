@@ -103,6 +103,7 @@
 					'new_item_name' => __( 'New Project Category Name' ),
 					'menu_name' => __('Project Categories')),
 				'rewrite' => array( 'slug' => 'projects/category' ),
+				'show_in_rest' => true
 			)
 		);
 	}
