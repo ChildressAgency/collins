@@ -81,16 +81,18 @@
                 <p class="project__description"><?php echo $attr['description']; ?></p>
             </div>
 
-            <div class="container">
-                <h2 class="project__gallery-heading">Project Gallery</h2>
-                <hr />
-                
-                <div class="project__gallery">
-                    <?php foreach( $inner as $block ){ ?>
-                        <?php echo $block['innerHTML']; ?>
-                    <?php } ?>
+            <?php if( $inner ): ?>
+                <div class="container">
+                    <h2 class="project__gallery-heading">Project Gallery</h2>
+                    <hr />
+                    
+                    <div class="project__gallery">
+                        <?php foreach( $inner as $block ){ ?>
+                            <?php echo $block['innerHTML']; ?>
+                        <?php } ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
 
     <?php endwhile; endif; ?>
