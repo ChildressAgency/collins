@@ -197,6 +197,36 @@ function team_members_block(){
 add_action( 'init', 'team_members_block', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
+// PROJECT LIST                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function icon_links_block(){
+    wp_register_script(
+        'icon-links-script',
+        get_template_directory_uri() . '/js/block-icon-links.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'icon-links-editor-style',
+        get_template_directory_uri() . '/css/block-icon-links-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'icon-links-style',
+        get_template_directory_uri() . '/css/block-icon-links-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/icon-links', array(
+        'editor_script'     => 'icon-links-script',
+        'editor_style'      => 'icon-links-editor-style',
+        'style'             => 'icon-links-style',
+    ) );
+}
+add_action( 'init', 'icon_links_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
 // ABOUT US NAVIGATION                                                       //
 ///////////////////////////////////////////////////////////////////////////////
 function sub_nav_block(){
