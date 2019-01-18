@@ -36,6 +36,7 @@
         global $post;
         $blocks = '';
         $projectTemplate = '';
+        $inner = '';
         $attr = '';
 
         if( has_blocks( $post->post_content ) ){
@@ -46,14 +47,15 @@
             foreach( $blocks as $block ){
                 if( 'childress/project-template' == $block['blockName'] ){
                     $projectTemplate = $block;
+
+                    $inner = $block['innerBlocks'];
                 }
             }
         }
 
         if( $projectTemplate ){
             $attr = $projectTemplate['attrs'];
-        }
-        ?>
+        } ?>
 
         <div class="project">
             <div class="container">
@@ -84,7 +86,9 @@
                 <hr />
                 
                 <div class="project__gallery">
-                    
+                    <?php foreach( $inner as $block ){ ?>
+                        <?php echo $block['innerHTML']; ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>

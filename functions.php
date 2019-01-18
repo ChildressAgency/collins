@@ -73,7 +73,11 @@
 				),
 				'public' => true,
 				'has_archive' => false,
-				'show_in_rest' => true
+				'show_in_rest' => true,
+				'template' => array(
+					array( 'childress/project-template', array() )
+				),
+				'templateLock' => 'all'
 			)
 		);
 	}

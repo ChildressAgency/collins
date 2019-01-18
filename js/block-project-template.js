@@ -32,40 +32,57 @@ registerBlockType( 'childress/project-template', {
 
         return (
             <div className={ className }>
-                <MediaUpload
-                    onSelect={ media => { setAttributes({ imageUrl: media.url, imageId: media.id, imageAlt: media.alt }); } }
-                    type="image"
-                    value={ imageId }
-                    render={ ({ open }) => (
-                        <Button className={ imageId ? 'image-button' : 'button button-large' } onClick={ open }>
-                            { imageId ? <img src={ imageUrl } /> : 'Select Image' }
-                        </Button>
-                    ) }
-                />
-                <p><PlainText
-                    value={ location }
-                    onChange={ ( value ) => { setAttributes({ location: value }) } }
-                    placeholder="Location"
-                    tagName="p"
-                /></p>
-                <p><RichText
-                    value={ info }
-                    onChange={ ( value ) => { setAttributes({ info: value }) } }
-                    placeholder="Info"
-                    tagName="p"
-                /></p>
+                <div className="project__info">
+                    <MediaUpload
+                        onSelect={ media => { setAttributes({ imageUrl: media.url, imageId: media.id, imageAlt: media.alt }); } }
+                        type="image"
+                        value={ imageId }
+                        render={ ({ open }) => (
+                            <Button className={ imageId ? 'image-button' : 'button button-large' } onClick={ open }>
+                                { imageId ? <img src={ imageUrl } /> : 'Select Image' }
+                            </Button>
+                        ) }
+                    />
+                    <div className="project__info-text">
+                        <p className="project__location"><PlainText
+                            value={ location }
+                            onChange={ ( value ) => { setAttributes({ location: value }) } }
+                            placeholder="Location"
+                            tagName="p"
+                        /></p>
+                        <p><RichText
+                            value={ info }
+                            onChange={ ( value ) => { setAttributes({ info: value }) } }
+                            placeholder="Info"
+                            tagName="p"
+                        /></p>
+                    </div>
+                </div>
+
+                <hr />
+
                 <p><RichText
                     value={ description }
                     onChange={ ( value ) => { setAttributes({ description: value }) } }
                     placeholder="Description"
                 /></p>
+
+                <h2>Project Gallery:</h2>
+                <hr />
+
+                <InnerBlocks
+                    allowedBlocks={['core/image']}
+                    template={[['core/image']]}
+                />
             </div>
         );
     },
 
     save( { attributes } ) {
         return (
-            <div></div>
+            <div className="wp-block-childress-project-template">
+                <InnerBlocks.Content />
+            </div>
         );
     },
 } );

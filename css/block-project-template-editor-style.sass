@@ -1,0 +1,21 @@
+@import '../_variables.sass'
+
+.wp-block-childress-project-template
+    .project
+        &__info
+            align-items: center
+            display: flex
+            flex-direction: row-reverse
+
+            & > *
+                flex: 1
+
+        &__location
+            +font-size(20)
+            color: $color-project-grey
+            font-weight: bold
+
+    .editor-inner-blocks
+        .editor-block-list__layout
+            display: grid
+            grid-template-columns: 1fr 1fr
