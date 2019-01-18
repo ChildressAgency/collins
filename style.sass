@@ -262,6 +262,42 @@ div::after //sass-lint:disable-line force-pseudo-nesting
         .wp-block-image
             margin-bottom: 0
 
+.projects-list
+    .project
+        display: flex
+        flex-direction: column
+        margin: 60px 0
+
+        & > *
+            flex: 1
+
+        &__image
+            margin-bottom: 30px
+
+        &__info
+            align-items: flex-start
+            display: flex
+            flex-direction: column
+            padding: 0
+
+        &__title
+            +font-size(36)
+
+        &__description
+            +font-size(16)
+            padding: 0
+
+        &__read-more
+            align-items: center
+            display: flex
+            width: 100%
+
+            span
+                background-color: $color-primary
+                flex: 1
+                height: 2px
+                margin-left: 30px
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //

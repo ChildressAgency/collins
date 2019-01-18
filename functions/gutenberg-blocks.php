@@ -280,7 +280,8 @@ add_action( 'init', 'project_list_block', 10, 0 );
 
 
 function project_list_callback( $attributes, $content ){
-    $result = '<div class="container">';
+    $result = '<div class="projects-list">'
+                . '<div class="container">';
 
     if( isset( $attributes['category'] ) )
         $terms = explode( ',', $attributes['category'] );
@@ -305,20 +306,45 @@ function project_list_callback( $attributes, $content ){
         while( $query->have_posts() ){
             $query->the_post();
             global $post;
+            $blocks = '';
+            $projectTemplate = '';
+            $attr = '';
 
             if( has_blocks( $post->post_content ) ){
                 $blocks = parse_blocks( $post->post_content );
-
-                var_dump( $blocks );
-            } else {
-                $result .= '<h2>' . get_the_title() . '</h2>';
-                $result .= get_the_content();
-                $result .= '<hr />';
             }
+
+            if( $blocks ){
+                foreach( $blocks as $block ){
+                    if( 'childress/project-template' == $block['blockName'] ){
+                        $projectTemplate = $block;
+                    }
+                }
+            }
+
+            if( $projectTemplate ){
+                $attr = $projectTemplate['attrs'];
+            }
+
+            $result .= '<div class="project">'
+                        . '<div class="project__image">'
+                            . '<img src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" />'
+                        . '</div>'
+                        . '<div class="project__info">'
+                            . '<h3 class="project__title">' . get_the_title() . '</h3>'
+                            . '<p class="project__location">' . $attr['location'] . '</p>'
+                            . '<p class="project__misc">' . $attr['info'] . '</p>'
+                            . '<p class="project__description">' . mb_strimwidth( $attr['description'], 0, 300, '...' ) . '</p>'
+                            . '<div class="project__read-more">'
+                                . '<a href="' . get_the_permalink() . '">READ MORE</a><span></span>'
+                            . '</div>'
+                        . '</div>'
+                    .'</div>';
         }
     }
 
-    $result .= '</div>';
+    $result .= '</div>'
+        .'</div>';
 
     return $result;
 }
