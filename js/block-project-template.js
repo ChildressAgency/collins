@@ -72,7 +72,6 @@ registerBlockType( 'childress/project-template', {
 
                 <InnerBlocks
                     allowedBlocks={['core/image']}
-                    template={[['core/image']]}
                 />
             </div>
         );
