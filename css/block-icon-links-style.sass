@@ -3,6 +3,7 @@
 .wp-block-childress-icon-links
     .container
         display: flex
+        flex-direction: column
         justify-content: space-between
 
     .wp-block-childress-icon-link
@@ -33,3 +34,8 @@
                 +font-size(24)
                 color: $color-black
                 text-align: center
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-icon-links
+        .container
+            flex-direction: row
