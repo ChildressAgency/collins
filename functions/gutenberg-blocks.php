@@ -257,6 +257,36 @@ function bid_inquiries_block(){
 add_action( 'init', 'bid_inquiries_block', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
+// CONTACTS                                                                  //
+///////////////////////////////////////////////////////////////////////////////
+function contacts_block(){
+    wp_register_script(
+        'contacts-script',
+        get_template_directory_uri() . '/js/block-contacts.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'contacts-editor-style',
+        get_template_directory_uri() . '/css/block-contacts-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'contacts-style',
+        get_template_directory_uri() . '/css/block-contacts-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/contacts', array(
+        'editor_script'     => 'contacts-script',
+        'editor_style'      => 'contacts-editor-style',
+        'style'             => 'contacts-style',
+    ) );
+}
+add_action( 'init', 'contacts_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
 // ABOUT US NAVIGATION                                                       //
 ///////////////////////////////////////////////////////////////////////////////
 function sub_nav_block(){
