@@ -300,6 +300,31 @@ div::after //sass-lint:disable-line force-pseudo-nesting
                 margin-left: 30px
 
 
+.wpcf7
+    label
+        @extend %font-helvetica-neue-medium
+        +font-size(16)
+
+    input[type='text'], // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+    input[type='tel'], // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+    input[type='email'], // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+    textarea
+        @extend %font-helvetica-neue
+        +font-size(20)
+        border: 1px solid $color-dark
+        padding: 10px 15px
+        width: 80%
+
+    input[type='submit'] // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+        @extend %font-helvetica-neue
+        +font-size(20)
+        background-color: $color-primary
+        border: 0
+        border-radius: 0
+        color: $color-white
+        padding: 15px 50px
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
