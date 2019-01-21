@@ -5,17 +5,13 @@ registerBlockType( 'childress/project-list', {
 
     attributes: {
         category: {
-            type: 'array',
-            default: [
-                    'residential',
-                    'commercial',
-                    'public-infrastructure'
-                ]
+            type: 'string',
+            default: '"residential", "commercial", "public-infrastructure"'
         },
     },
 
     edit( { attributes, className, setAttributes } ){
-        const { category, text } = attributes;
+        const { category } = attributes;
 
         return (
             <Fragment>
@@ -25,27 +21,23 @@ registerBlockType( 'childress/project-list', {
                         initialOpen={ true }>
                         <SelectControl
                             label="Category"
-                            value={ category ? category : [ 'residential' ] }
+                            value={ category ? category : '"residential", "commercial", "public-infrastructure"' }
                             options={[
                                 {
                                     label: 'All',
-                                    value: [
-                                        'residential',
-                                        'commercial',
-                                        'public-infrastructure'
-                                    ]
+                                    value: '"residential", "commercial", "public-infrastructure"'
                                 },
                                 {
                                     label: 'Residential',
-                                    value: [ 'residential' ]
+                                    value: 'residential'
                                 },
                                 {
                                     label: 'Commercial',
-                                    value: [ 'commercial' ]
+                                    value: 'commercial'
                                 },
                                 {
                                     label: 'Public & Infrastructure',
-                                    value: [ 'public-infrastructure' ]
+                                    value: 'public-infrastructure'
                                 }
                             ]}
                             onChange={ ( value ) => setAttributes({ category: value }) }
@@ -60,6 +52,8 @@ registerBlockType( 'childress/project-list', {
     },
 
     save( { attributes } ) {
+        const { category } = attributes;
+
         // Rendering in PHP
         return null;
     },

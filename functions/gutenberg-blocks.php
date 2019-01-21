@@ -370,8 +370,8 @@ add_action( 'init', 'project_list_block', 10, 0 );
 
 
 function project_list_callback( $attributes, $content ){
-    $result = '<div class="projects-list">'
-                . '<div class="container">';
+    $result = '<div class="projects-list">
+                <div class="container">';
 
     if( isset( $attributes['category'] ) )
         $terms = explode( ',', $attributes['category'] );
@@ -416,25 +416,25 @@ function project_list_callback( $attributes, $content ){
                 $attr = $projectTemplate['attrs'];
             }
 
-            $result .= '<div class="project">'
-                        . '<div class="project__image">'
-                            . '<img src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" />'
-                        . '</div>'
-                        . '<div class="project__info">'
-                            . '<h3 class="project__title">' . get_the_title() . '</h3>'
-                            . '<p class="project__location">' . $attr['location'] . '</p>'
-                            . '<p class="project__misc">' . $attr['info'] . '</p>'
-                            . '<p class="project__description">' . mb_strimwidth( $attr['description'], 0, 300, '...' ) . '</p>'
-                            . '<div class="project__read-more">'
-                                . '<a href="' . get_the_permalink() . '">READ MORE</a><span></span>'
-                            . '</div>'
-                        . '</div>'
-                    .'</div>';
+            $result .= '<div class="project">
+                            <div class="project__image">
+                                <img src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" />
+                            </div>
+                            <div class="project__info">
+                                <h3 class="project__title">' . get_the_title() . '</h3>
+                                <p class="project__location">' . $attr['location'] . '</p>
+                                <p class="project__misc">' . $attr['info'] . '</p>
+                                <p class="project__description">' . mb_strimwidth( $attr['description'], 0, 300, '...' ) . '</p>
+                                <div class="project__read-more">
+                                    <a href="' . get_the_permalink() . '">READ MORE</a><span></span>
+                                </div>
+                            </div>
+                        </div>';
         }
     }
 
-    $result .= '</div>'
-        .'</div>';
+    $result .= '</div>
+            </div>';
 
     return $result;
 }
