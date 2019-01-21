@@ -1,0 +1,32 @@
+@import '../_variables.sass'
+
+.wp-block-childress-bid-inquiries
+    h2
+        +font-size(36)
+
+    hr
+        background-color: #868686 // sass-lint:disable-line no-color-literals
+        border: 0
+        height: 1px
+        margin-bottom: 30px
+        width: 100%
+
+    .inquiry
+        margin-bottom: 30px
+
+        &__title
+            @extend %font-helvetica-neue-thin
+            +font-size(32)
+            line-height: 1
+            margin-bottom: 0
+
+        &__location
+            +font-size(20)
+            color: $color-text-grey
+            margin-bottom: 15px
+
+        &__info
+            @extend %font-helvetica-neue-medium
+            +font-size(18)
+            font-weight: bold
+            margin-bottom: 0
