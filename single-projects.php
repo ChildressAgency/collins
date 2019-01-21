@@ -1,36 +1,5 @@
 <?php get_header(); ?>
 
-    <div class="wp-block-childress-hero-box hero-box" style="background-image:url(http://dev.childressagency.com/collins/wp-content/uploads/2019/01/projects-heading.png)">
-        <div class="wp-block-childress-hero-all hero-all hero-all--gradient">
-            <div class="container">
-                <div style="height:200px" aria-hidden="true" class="wp-block-spacer"></div>
-
-                <h2 style="text-align:center">PROJECTS<br></h2>
-
-                <div style="height:200px" aria-hidden="true" class="wp-block-spacer"></div>
-            </div>
-        </div>
-    </div>
-
-    <div style="height:60px" aria-hidden="true" class="wp-block-spacer"></div>
-
-    <div class="wp-block-childress-container container container--thin">
-        <div class="wp-block-columns has-3-columns">
-            <div class="wp-block-column">
-                <div class="wp-block-image"><figure class="aligncenter"><img src="http://dev.childressagency.com/collins/wp-content/uploads/2019/01/residential-icon-selected.png" alt="" class="wp-image-535"/></figure></div>
-                <p style="font-size:24px;text-align:center">RESIDENTIAL</p>
-            </div>
-            <div class="wp-block-column">
-                <div class="wp-block-image"><figure class="aligncenter"><img src="http://dev.childressagency.com/collins/wp-content/uploads/2019/01/commercial-icon.png" alt="" class="wp-image-332"/></figure></div>
-                <p style="font-size:24px;text-align:center">COMMERCIAL</p>
-            </div>
-            <div class="wp-block-column">
-                <div class="wp-block-image"><figure class="aligncenter"><img src="http://dev.childressagency.com/collins/wp-content/uploads/2019/01/public-infrastructure-icon.png" alt="" class="wp-image-333"/></figure></div>
-                <p style="font-size:24px;text-align:center">PUBLIC &amp; INFRASTRUCTURE</p>
-            </div>
-        </div>
-    </div>
-
     <?php if( have_posts() ): while( have_posts() ): the_post(); ?>
         <?php 
         global $post;
@@ -55,12 +24,14 @@
 
         if( $projectTemplate ){
             $attr = $projectTemplate['attrs'];
-        } ?>
+        } 
+
+        $terms = get_the_terms( $post->ID, 'project-category' ); ?>
 
         <div class="project">
             <div class="container">
                 <h2 class="project__about-this">About this Project</h2>
-                <p class="project__breadcrumbs">HOME / RESIDENTIAL / <?php echo strtoupper( get_the_title() ); ?></p>
+                <p class="project__breadcrumbs">HOME / <?php echo strtoupper( $terms[0]->name ); ?> / <?php echo strtoupper( get_the_title() ); ?></p>
                 <hr />
 
                 <div class="project__info">
