@@ -1,7 +1,7 @@
 
     <footer class="footer">
         <div class="footer__top">
-            <a class="footer__logo" href="<?php echo get_home_url(); ?>"><img src="wp-content/uploads/2019/01/logo.png" alt="logo"></a>
+            <a class="footer__logo" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_option( 'logo' ); ?>" alt="logo"></a>
             <div class="footer__info">
                 <div class="footer__social">
                     <a href="<?php echo get_option('instagram'); ?>"><i class="icon fab fa-instagram"></i></a>

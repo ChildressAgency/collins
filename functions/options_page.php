@@ -6,6 +6,7 @@
     add_action( 'admin_menu', 'theme_options' );
 
     function register_mysettings() { // whitelist options
+      register_setting( 'them_options', 'logo' );
       register_setting( 'them_options', 'address' );
       register_setting( 'them_options', 'phone' );
       register_setting( 'them_options', 'email' );
@@ -29,6 +30,42 @@
                 <?php settings_fields( 'them_options' ); ?>
                 <?php do_settings_sections( 'them_options' ); ?>
 
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">Logo</th>
+                        <td style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <img class="logo" src="<?php echo get_option('logo'); ?>" height="100"/>
+                            <input class="logo_url" type="text" name="logo" size="60" value="<?php echo get_option('logo'); ?>">
+                            <a href="#" class="logo_upload">Upload</a>
+                        </td>
+                    </tr>
+                </table>
+
+                <script>
+                    jQuery(document).ready(function($) {
+                        $('.logo_upload').click(function(e) {
+                            e.preventDefault();
+
+                            var custom_uploader = wp.media({
+                                title: 'Custom Image',
+                                button: {
+                                    text: 'Set Image'
+                                },
+                                multiple: false  // Set this to true to allow multiple files to be selected
+                            })
+                            .on('select', function() {
+                                var attachment = custom_uploader.state().get('selection').first().toJSON();
+                                $('.logo').attr('src', attachment.url);
+                                $('.logo_url').val(attachment.url);
+
+                            })
+                            .open();
+                        });
+                    });
+                </script>
+
+                <hr />
+
                 <h2>Contact Info</h2>
                 <table class="form-table">
                     <tr valign="top">
@@ -46,6 +83,8 @@
                         <td><input type="text" name="email" value="<?php echo esc_attr( get_option('email') ); ?>" size="60" /></td>
                     </tr>
                 </table>
+
+                <hr />
 
                 <h2>Social</h2>
                 <table class="form-table">
