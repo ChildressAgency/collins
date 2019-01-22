@@ -68,21 +68,21 @@ registerBlockType( 'childress/contact', {
 
         return (
             <div className="contact">
-                <h4 class="inquiry__name">
+                <h4 className="inquiry__name">
                     <PlainText
                         value={ name }
                         onChange={ ( value ) => setAttributes({ name: value }) }
                         placeholder="Name"
                     />
                 </h4>
-                <p class="inquiry__title">
+                <p className="inquiry__title">
                     <PlainText
                         value={ title }
                         onChange={ ( value ) => setAttributes({ title: value }) }
                         placeholder="Title"
                     />
                 </p>
-                <p class="inquiry__email">
+                <p className="inquiry__email">
                     <PlainText
                         value={ email }
                         onChange={ ( value ) => setAttributes({ email: value }) }
@@ -97,10 +97,10 @@ registerBlockType( 'childress/contact', {
         const { name, title, email } = attributes;
 
         return (
-            <div class="contact">
-                <h4 class="contact__name">{ name }</h4>
-                <p class="contact__title">{ title }</p>
-                <a href={ "mailto:" + email } class="contact__email">{ email }</a>
+            <div className="contact">
+                <h4 className="contact__name">{ name }</h4>
+                <p className="contact__title">{ title }</p>
+                <a href={ "mailto:" + email } className="contact__email">{ email }</a>
             </div>
         );
     },
