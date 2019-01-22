@@ -287,6 +287,36 @@ function contacts_block(){
 add_action( 'init', 'contacts_block', 10, 0 );
 
 ///////////////////////////////////////////////////////////////////////////////
+// CAREER OPENINGS                                                           //
+///////////////////////////////////////////////////////////////////////////////
+function career_openings_block(){
+    wp_register_script(
+        'career-openings-script',
+        get_template_directory_uri() . '/js/block-career-openings.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'career-openings-editor-style',
+        get_template_directory_uri() . '/css/block-career-openings-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'career-openings-style',
+        get_template_directory_uri() . '/css/block-career-openings-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/career-openings', array(
+        'editor_script'     => 'career-openings-script',
+        'editor_style'      => 'career-openings-editor-style',
+        'style'             => 'career-openings-style',
+    ) );
+}
+add_action( 'init', 'career_openings_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
 // ABOUT US NAVIGATION                                                       //
 ///////////////////////////////////////////////////////////////////////////////
 function sub_nav_block(){
