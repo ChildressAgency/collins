@@ -1,23 +1,23 @@
 
     <footer class="footer">
         <div class="footer__top">
-            <img class="footer__logo" src="<?php echo get_option('header_logo'); ?>" alt="logo">
+            <a class="footer__logo" href="<?php echo get_home_url(); ?>"><img src="wp-content/uploads/2019/01/logo.png" alt="logo"></a>
             <div class="footer__info">
                 <div class="footer__social">
-                    <a href="#_"><i class="icon fab fa-instagram"></i></a>
-                    <a href="#_"><i class="icon fab fa-twitter"></i></a>
-                    <a href="#_"><i class="icon fab fa-facebook-f"></i></a>
+                    <a href="<?php echo get_option('instagram'); ?>"><i class="icon fab fa-instagram"></i></a>
+                    <a href="<?php echo get_option('twitter'); ?>"><i class="icon fab fa-twitter"></i></a>
+                    <a href="<?php echo get_option('facebook'); ?>"><i class="icon fab fa-facebook-f"></i></a>
                     <a href="#_">Employee Login</a>
                 </div>
                 <div class="footer__text">
                     <div class="footer__contact">
                         <h4>Main Office</h4>
-                        <p><i class="icon fas fa-map-marker-alt"></i>  <span class="footer__address">1 Collins Drive<br/>Fredericksburg, VA 22408</span></p>
-                        <p><i class="icon fas fa-phone"></i>  <span class="footer__phone">(540) 898-1166</span></p>
-                        <p><i class="icon fas fa-envelope"></i>  <span class="footer__email">info@collinscc.com</span></p>
+                        <p><i class="icon fas fa-map-marker-alt"></i>  <span class="footer__address"><?php echo get_option('address'); ?></span></p>
+                        <p><a href="tel:<?php echo get_option('phone'); ?>"><i class="icon fas fa-phone"></i>  <span class="footer__phone"><?php echo get_option('phone'); ?></span></a></p>
+                        <p><a href="mailto:<?php echo get_option('email'); ?>"><i class="icon fas fa-envelope"></i>  <span class="footer__email"><?php echo get_option('email'); ?></span></a></p>
                     </div>
                     <div class="footer__misc">
-                        <h4>Visit our<br/>Contact Us page</h4>
+                        <h4><a href="contact">Visit our<br/>Contact Us page</a></h4>
                         <p>Reach Out to Us</p>
                         <p>Bid Inquiries</p>
                     </div>

@@ -30,7 +30,7 @@
     
     <header class="header">
         <div class="header__logo">
-            <img src="<?php echo get_option( 'header_logo' ); ?>" alt="logo">
+            <a href="<?php echo get_home_url(); ?>"><img src="wp-content/uploads/2019/01/logo.png" alt="logo"></a>
         </div>
         <div class="header__links">
             <div class="header__login">
