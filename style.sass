@@ -79,12 +79,17 @@ div::after //sass-lint:disable-line force-pseudo-nesting
 ///////////////////////////////////////////////////////////////////////////////
 
 .header
+    align-items: center
     display: flex
+    flex-direction: column
     justify-content: space-between
     margin: 30px
 
+    &__logo
+        margin-bottom: 30px
+
     &__links
-        align-items: flex-end
+        align-items: center
         display: flex
         flex-direction: column
         justify-content: space-between
@@ -92,6 +97,7 @@ div::after //sass-lint:disable-line force-pseudo-nesting
     &__login
         @extend %font-helvetica-neue
         +font-size(18)
+        margin-bottom: 30px
 
         a
             color: $color-text-grey
@@ -108,7 +114,7 @@ div::after //sass-lint:disable-line force-pseudo-nesting
         margin-right: auto
 
     &__nav
-        align-items: flex-start
+        align-items: center
         display: flex
         flex-direction: column
         justify-content: flex-end
@@ -120,8 +126,6 @@ div::after //sass-lint:disable-line force-pseudo-nesting
     &__item
         +font-size(22)
         font-weight: bold
-        margin-left: 20px
-        margin-right: 20px
         padding-bottom: 15px
         padding-top: 5px
 

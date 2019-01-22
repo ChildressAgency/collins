@@ -35,12 +35,12 @@
             display: none
 
         &__nav
-            align-items: center
             flex-direction: row
             max-height: unset !important // sass-lint:disable-line no-important
 
         &__item
-            padding-bottom: 5px
+            margin-left: 20px
+            margin-right: 20px
 
         &__drop
             &:hover
@@ -100,6 +100,19 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 @media screen and (min-width: 992px)
+    .header
+        align-items: unset
+        flex-direction: row
+
+        &__logo
+            margin-bottom: 0
+
+        &__links
+            align-items: flex-end
+
+        &__login
+            margin-bottom: 0
+
     .container
         max-width: 960px
 
