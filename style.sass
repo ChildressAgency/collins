@@ -192,6 +192,12 @@ div::after //sass-lint:disable-line force-pseudo-nesting
         +font-size(20)
         background-color: $color-primary
         border-radius: 0
+        transition: box-shadow .2s ease-in
+
+        &:hover
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+            text-decoration: none
+            transition: box-shadow .2s ease-out
 
 .slick-slider
     height: 100%
@@ -326,7 +332,13 @@ div::after //sass-lint:disable-line force-pseudo-nesting
         border: 0
         border-radius: 0
         color: $color-white
+        cursor: pointer
         padding: 15px 50px
+        transition: box-shadow .2s ease-in
+
+        &:hover
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+            transition: box-shadow .2s ease-out
 
 
 ///////////////////////////////////////////////////////////////////////////////
