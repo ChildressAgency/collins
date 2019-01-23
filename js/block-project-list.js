@@ -1,6 +1,6 @@
 registerBlockType( 'childress/project-list', {
     title: 'Project List',
-    icon: 'megaphone',
+    icon: 'list-view',
     category: 'custom-blocks',
 
     attributes: {

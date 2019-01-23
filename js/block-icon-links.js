@@ -1,6 +1,6 @@
 registerBlockType( 'childress/icon-links', {
     title: 'Icon Links',
-    icon: 'megaphone',
+    icon: 'images-alt',
     category: 'custom-blocks',
 
     edit( { attributes, className, setAttributes } ){

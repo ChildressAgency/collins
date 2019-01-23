@@ -1,6 +1,6 @@
 registerBlockType( 'childress/sub-nav', {
-    title: 'Navigation',
-    icon: 'editor-contract',
+    title: 'About Us Menu',
+    icon: 'menu',
     category: 'custom-blocks',
 
     edit( { attributes, className, setAttributes } ) {

@@ -1,6 +1,6 @@
 registerBlockType( 'childress/image-links', {
     title: 'Image Links',
-    icon: 'editor-contract',
+    icon: 'images-alt',
     category: 'custom-blocks',
 
     edit( { attributes, className, setAttributes } ) {

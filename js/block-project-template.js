@@ -1,6 +1,6 @@
 registerBlockType( 'childress/project-template', {
     title: 'Project Template',
-    icon: 'megaphone',
+    icon: 'welcome-write-blog',
     category: 'custom-blocks',
 
     attributes: {

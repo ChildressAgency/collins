@@ -1,6 +1,6 @@
 registerBlockType( 'childress/featured-slider', {
     title: 'Featured Slider',
-    icon: 'editor-contract',
+    icon: 'format-gallery',
     category: 'custom-blocks',
 
     attributes: {
