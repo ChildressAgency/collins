@@ -7,7 +7,11 @@
                     <a href="<?php echo get_option('instagram'); ?>"><i class="icon fab fa-instagram"></i></a>
                     <a href="<?php echo get_option('twitter'); ?>"><i class="icon fab fa-twitter"></i></a>
                     <a href="<?php echo get_option('facebook'); ?>"><i class="icon fab fa-facebook-f"></i></a>
-                    <a href="#_">Employee Login</a>
+                    <?php if( is_user_logged_in() ){ ?>
+                        <a href="<?php echo home_url( 'logout' ); ?>">Logout</a>
+                    <?php } else { ?>
+                        <a href="<?php echo home_url( 'login' ); ?>">Employee Login</a>
+                    <?php } ?>
                 </div>
                 <div class="footer__text">
                     <div class="footer__contact">
