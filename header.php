@@ -34,7 +34,11 @@
         </div>
         <div class="header__links">
             <div class="header__login">
-                <a href="#_">Employee Login</a>
+                <?php if( is_user_logged_in() ){ ?>
+                    <a href="<?php echo home_url( 'logout' ); ?>">Logout</a>
+                <?php } else { ?>
+                    <a href="<?php echo home_url( 'login' ); ?>">Employee Login</a>
+                <?php } ?>
             </div>
             <nav class="navbar header__nav">
                 <button class="navbar__toggler" type="button" data-target="#main-menu">
