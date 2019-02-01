@@ -35,17 +35,39 @@
             display: none
 
         &__nav
-            align-items: center
             flex-direction: row
             max-height: unset !important // sass-lint:disable-line no-important
 
         &__item
-            padding-bottom: 5px
+            margin-left: 20px
+            margin-right: 20px
 
         &__drop
             &:hover
                 & > .navbar__drop-menu
                     display: block
+
+    .project
+        &__info
+            align-items: center
+            flex-direction: row
+            padding: 60px 0
+
+        &__gallery
+            grid-template-columns: 1fr 1fr
+
+    .projects-list
+        .project
+            flex-direction: row
+
+            &__image
+                margin-bottom: 0
+                padding-right: 30px
+
+            &__info
+                flex-direction: column
+                padding: 0
+                padding-left: 30px
 
     .footer
         &__top
@@ -65,19 +87,24 @@
         &__copyright
             flex-direction: row
 
-        .navbar
-            &__item
-                &:first-of-type // sass-lint:disable-line force-pseudo-nesting
-                    margin-left: 0
-
-                &:last-of-type
-                    margin-right: 0
-
 ///////////////////////////////////////////////////////////////////////////////
 // 992                                                                       //
 ///////////////////////////////////////////////////////////////////////////////
 
 @media screen and (min-width: 992px)
+    .header
+        align-items: unset
+        flex-direction: row
+
+        &__logo
+            margin-bottom: 0
+
+        &__links
+            align-items: flex-end
+
+        &__login
+            margin-bottom: 0
+
     .container
         max-width: 960px
 

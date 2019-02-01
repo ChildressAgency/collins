@@ -1,0 +1,41 @@
+@import '../_variables.sass'
+
+.wp-block-childress-icon-links
+    .container
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+    .wp-block-childress-icon-link
+        flex: 1
+
+        &:hover
+            .icon-link
+                text-decoration: none
+
+                &__image--hover
+                    opacity: 1
+
+                &__label
+                    color: $color-secondary
+                    text-decoration: none
+
+        .icon-link
+            &__image-wrapper
+                text-align: center
+
+            &__image
+                &--hover
+                    opacity: 0
+                    position: absolute
+                    z-index: 99
+
+            &__label
+                +font-size(24)
+                color: $color-black
+                text-align: center
+
+@media screen and ( min-width: 768px )
+    .wp-block-childress-icon-links
+        .container
+            flex-direction: row

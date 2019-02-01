@@ -1,6 +1,6 @@
 registerBlockType( 'childress/hero-box', {
     title: 'Hero Box',
-    icon: 'screenoptions',
+    icon: 'format-image',
     category: 'custom-blocks',
 
     attributes: {

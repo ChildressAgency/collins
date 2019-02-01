@@ -79,12 +79,17 @@ div::after //sass-lint:disable-line force-pseudo-nesting
 ///////////////////////////////////////////////////////////////////////////////
 
 .header
+    align-items: center
     display: flex
+    flex-direction: column
     justify-content: space-between
     margin: 30px
 
+    &__logo
+        margin-bottom: 30px
+
     &__links
-        align-items: flex-end
+        align-items: center
         display: flex
         flex-direction: column
         justify-content: space-between
@@ -92,6 +97,7 @@ div::after //sass-lint:disable-line force-pseudo-nesting
     &__login
         @extend %font-helvetica-neue
         +font-size(18)
+        margin-bottom: 30px
 
         a
             color: $color-text-grey
@@ -108,7 +114,7 @@ div::after //sass-lint:disable-line force-pseudo-nesting
         margin-right: auto
 
     &__nav
-        align-items: flex-start
+        align-items: center
         display: flex
         flex-direction: column
         justify-content: flex-end
@@ -120,8 +126,6 @@ div::after //sass-lint:disable-line force-pseudo-nesting
     &__item
         +font-size(22)
         font-weight: bold
-        margin-left: 20px
-        margin-right: 20px
         padding-bottom: 15px
         padding-top: 5px
 
@@ -141,12 +145,14 @@ div::after //sass-lint:disable-line force-pseudo-nesting
             text-decoration: none
 
     &__drop-menu
-        background-color: $color-black
+        background-color: $color-nav-dropdown
         display: none
-        margin-top: 40px
-        padding: 15px 30px
+        margin-top: 15px
         position: absolute
         z-index: 99
+
+        li
+            margin-bottom: 0
 
         &:hover
             display: block
@@ -160,12 +166,21 @@ div::after //sass-lint:disable-line force-pseudo-nesting
             width: 100%
 
     &__drop-item
+        +font-size(18)
         color: $color-white
         display: block
-        margin-bottom: 5px
+        margin-bottom: 0
+        padding: 5px 30px
+
+        &:first-of-type
+            padding-top: 15px
 
         &:last-of-type
-            margin-bottom: 0
+            padding-bottom: 15px
+
+        &:hover
+            background-color: $color-nav-dropdown-hover
+            text-decoration: none
 
 ///////////////////////////////////////////////////////////////////////////////
 // CONTENT                                                                   //
@@ -177,6 +192,12 @@ div::after //sass-lint:disable-line force-pseudo-nesting
         +font-size(20)
         background-color: $color-primary
         border-radius: 0
+        transition: box-shadow .2s ease-in
+
+        &:hover
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+            text-decoration: none
+            transition: box-shadow .2s ease-out
 
 .slick-slider
     height: 100%
@@ -193,6 +214,131 @@ div::after //sass-lint:disable-line force-pseudo-nesting
 
 .wp-block-column
     flex-grow: 1
+
+
+.project
+    hr
+        color: $color-project-grey
+
+    h2
+        +font-size(40)
+
+    &__breadcrumbs
+        +font-size(20)
+
+    &__info
+        align-items: flex-start
+        display: flex
+        flex-direction: column-reverse
+        padding: 30px 0
+
+        &-text
+            flex: 1
+            margin-top: 30px
+
+        &-image
+            flex: 1
+
+            img
+                width: 100%
+
+    &__title
+        @extend %font-helvetica-neue-thin
+        +font-size(36)
+        font-weight: normal
+        line-height: 1
+
+    &__location
+        +font-size(20)
+        color: $color-project-grey
+        font-weight: bold
+
+    &__misc
+        @extend %font-helvetica-neue-thin
+        +font-size(22)
+
+    &__description
+        +font-size(18)
+        padding: 60px 0
+
+    &__gallery
+        display: grid
+        grid-gap: 60px
+        grid-template-columns: 1fr
+        padding: 60px 0
+
+        img
+            display: block
+            width: 100%
+
+        .wp-block-image
+            margin-bottom: 0
+
+.projects-list
+    .project
+        display: flex
+        flex-direction: column
+        margin: 60px 0
+
+        &__image
+            flex: 1
+            margin-bottom: 30px
+
+        &__info
+            align-items: flex-start
+            display: flex
+            flex: 1
+            flex-direction: column
+            padding: 0
+
+        &__title
+            +font-size(36)
+
+        &__description
+            +font-size(16)
+            padding: 0
+
+        &__read-more
+            align-items: center
+            display: flex
+            width: 100%
+
+            span
+                background-color: $color-primary
+                flex: 1
+                height: 2px
+                margin-left: 30px
+
+
+.wpcf7
+    label
+        @extend %font-helvetica-neue-medium
+        +font-size(16)
+
+    input[type='text'], // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+    input[type='tel'], // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+    input[type='email'], // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+    textarea
+        @extend %font-helvetica-neue
+        +font-size(20)
+        border: 1px solid $color-dark
+        padding: 10px 15px
+        width: 80%
+
+    input[type='submit'] // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+        @extend %font-helvetica-neue
+        +font-size(20)
+        background-color: $color-primary
+        border: 0
+        border-radius: 0
+        color: $color-white
+        cursor: pointer
+        padding: 15px 50px
+        transition: box-shadow .2s ease-in
+
+        &:hover
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, .5)
+            transition: box-shadow .2s ease-out
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -284,10 +430,10 @@ div::after //sass-lint:disable-line force-pseudo-nesting
 
             &__item
                 &:first-of-type
-                    margin-left: 20px
+                    margin-left: 0
 
                 &:last-of-type
-                    margin-right: 20px
+                    margin-right: 0
 
             &__link
                 +font-size(20)

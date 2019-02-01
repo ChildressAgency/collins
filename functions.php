@@ -1,11 +1,11 @@
 <?php
 
 	// display template file in footer
-	add_action( 'wp_footer', 'show_template' );
-	function show_template() {
-		global $template;
-		print_r( $template );
-	}
+	// add_action( 'wp_footer', 'show_template' );
+	// function show_template() {
+	// 	global $template;
+	// 	print_r( $template );
+	// }
 
 	// load jquery
 	function jquery_cdn(){
@@ -62,6 +62,52 @@
 		'footer_menu' => 'Footer Menu',
 		'about_menu' => 'About Us Menu',
 	) );
+
+	// Projects Post Type
+	function create_post_type_projects() {
+		register_post_type( 'projects',
+			array(
+				'labels' => array(
+					'name' => __( 'Projects' ),
+					'singular_name' => __( 'Project' )
+				),
+				'public' => true,
+				'has_archive' => false,
+				'show_in_rest' => true,
+				'template' => array(
+					array( 'childress/project-template', array() )
+				),
+				'templateLock' => 'all'
+			)
+		);
+	}
+	add_action( 'init', 'create_post_type_projects', 0 );
+
+	// Project Category Taxonomy
+	function create_project_category_taxonomy(){
+		register_taxonomy(
+			'project-category',
+			'projects',
+			array(
+				'hierarchical' => true,
+				'labels' => array( 
+					'name' => _x('Project Categories', 'taxonomy general name'),
+					'singular_name' => _x('Project Category', 'taxonomy singular name'),
+					'search_items' => __('Search Project Categories'),
+					'all_items' => __('All Project Categories'),
+					'parent_item' => __( 'Parent Project Category' ),
+					'parent_item_colon' => __( 'Parent Project Category:' ),
+					'edit_item' => __('Edit Project Category'),
+					'update_item' => __('Update Project Category'),
+					'add_new_item' => __('Add New Project Category'),
+					'new_item_name' => __( 'New Project Category Name' ),
+					'menu_name' => __('Project Categories')),
+				'rewrite' => array( 'slug' => 'projects/category' ),
+				'show_in_rest' => true
+			)
+		);
+	}
+	add_action( 'init', 'create_project_category_taxonomy', 10 );
 
 
 	// Custom Blocks Category

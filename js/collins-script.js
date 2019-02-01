@@ -9,7 +9,7 @@ $(document).ready(function(){
     $( '.navbar__toggler' ).click(function(){
             $header_nav_height = 0;
             $header_nav.children().each(function(){
-                $header_nav_height += $( this ).outerHeight();
+                $header_nav_height += $( this ).outerHeight() + parseInt( $( this ).css('marginTop') ) + parseInt( $( this ).css('marginBottom') );
             });
 
         if( $header_nav.hasClass( 'navbar__open' ) ){

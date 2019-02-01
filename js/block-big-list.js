@@ -1,6 +1,6 @@
 registerBlockType( 'childress/big-list', {
     title: 'Big List',
-    icon: 'editor-contract',
+    icon: 'list-view',
     category: 'custom-blocks',
 
     edit( { attributes, className, setAttributes } ) {
