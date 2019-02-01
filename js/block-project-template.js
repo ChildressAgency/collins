@@ -2,6 +2,7 @@ registerBlockType( 'childress/project-template', {
     title: 'Project Template',
     icon: 'welcome-write-blog',
     category: 'custom-blocks',
+    parent: false,
 
     attributes: {
         title: {
