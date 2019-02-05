@@ -9,6 +9,7 @@
       register_setting( 'them_options', 'logo' );
       register_setting( 'them_options', 'address' );
       register_setting( 'them_options', 'phone' );
+      register_setting( 'them_options', 'fax' );
       register_setting( 'them_options', 'email' );
       register_setting( 'them_options', 'instagram' );
       register_setting( 'them_options', 'twitter' );
@@ -76,6 +77,11 @@
                     <tr valign="top">
                         <th scope="row">Phone</th>
                         <td><input type="text" name="phone" value="<?php echo esc_attr( get_option('phone') ); ?>" size="60" /></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Fax</th>
+                        <td><input type="text" name="fax" value="<?php echo esc_attr( get_option('fax') ); ?>" size="60" /></td>
                     </tr>
 
                     <tr valign="top">
